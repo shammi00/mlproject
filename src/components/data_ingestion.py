@@ -3,10 +3,13 @@
 #system libraries
 import os
 import sys
+
 #custom modules
-from src.components.data_transformation import DataTransformation
 from src.logger import logging
 from src.exception import CustomException
+from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer
+
 #third party libraries
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -73,7 +76,10 @@ if __name__ == "__main__":
     train_data_path, test_data_path = data_ingestion.initiate_data_ingestion()
 
     data_transformation = DataTransformation()
-    train_arr, test_arr, preprocessor_path = data_transformation.initiate_data_transformation(train_data_path, test_data_path)
+    train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_data_path, test_data_path)
+
+    model_trainer = ModelTrainer()
+    print(model_trainer.initiate_model_trainer(train_arr, test_arr))
 
 
 # The above code block checks if the script is being run as the main program. If it

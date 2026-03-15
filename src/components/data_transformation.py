@@ -25,6 +25,10 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 class DataTransformationConfig:
     prepossor_obj_file_path = os.path.join("artifacts", "preprocessor.pkl")
 
+# The above code defines a data class `DataTransformationConfig` that contains a single attribute `prepossor_obj_file_path`.
+# This attribute is initialized with a default value that specifies the file path for the preprocessor object, which is set to "artifacts/preprocessor.pkl".
+# This configuration class will be used to manage the file path for saving the preprocessor object during the data transformation process.
+
 class DataTransformation:
     def __init__(self):
         self.data_transformation_config = DataTransformationConfig()
@@ -65,13 +69,20 @@ class DataTransformation:
                     ('categorical_transformer', categorical_pipeline, categorical_columns)
                 ]
             )
-            
+    
             logging.info(f"Categorical columns encoding completed")
             logging.info(f"Numerical columns scaling completed")
 
             return preprocessor
+        
         except Exception as e:
             raise CustomException(e, sys)
+
+# The `get_data_transformer_object` method is responsible for creating and returning a data transformer object that can be used to preprocess the data.
+# It defines separate pipelines for numerical and categorical features, which include imputation and scaling steps.
+# The method also logs the columns being processed and any exceptions that occur during the creation of the preprocessor object.
+
+
     
     def initiate_data_transformation(self, train_path, test_path):
         
@@ -114,5 +125,10 @@ class DataTransformation:
             )
         except Exception as e:
             raise CustomException(e, sys)
-            
+
+# The `initiate_data_transformation` method is responsible for performing the data transformation process.
+# It reads the training and testing data from the specified file paths, obtains the preprocessor object, and applies the preprocessing steps to both the training and testing data.
+# The method then combines the transformed input features with the target variable to create the final training and testing arrays.
+# Finally, it saves the preprocessor object to the specified file path and returns the transformed training and testing arrays along with the preprocessor file path. 
+# If any exceptions occur during this process, they are caught and raised as a `CustomException` with the relevant error information.            
             
