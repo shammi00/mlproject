@@ -17,3 +17,9 @@ class CustomException(Exception):
         return self.error_message
     
 
+"""
+The above code defines a custom exception class `CustomException` that inherits from the built-in `Exception` class.
+It includes a method `error_message_details` that extracts details about the error, such as the file name and line number where the error occurred, and formats this information into a string.
+The `__str__` method is overridden to return the formatted error message when the exception is printed.
+This custom exception can be used throughout the application to provide more detailed error messages for debugging purposes.
+"""

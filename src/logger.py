@@ -11,3 +11,10 @@ logging.basicConfig(
     level=logging.INFO
 )
 
+"""
+The above code sets up a logging configuration for a Python application.
+It creates a log file with a name based on the current date and time, and stores it in a "logs" directory within the current working directory.
+The logging format includes the timestamp, line number, logger name, log level, and the log message.
+The logging level is set to INFO, which means that all log messages at this level and above will be recorded in the log file.
+This setup allows for organized and timestamped logging of events and errors in the application.
+"""
